@@ -7,7 +7,8 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb+srv://patchara818:t7xYg0rwu6iyoQPs@expressfirst.zpa6tjn.mongodb.net/?retryWrites=true&w=majority&appName=ExpressFirst')
+var mongoDB = "mongodb+srv://patcharawealth:yAdgC7BbXPuSAkrT@expressapi.gyq6qm9.mongodb.net/?retryWrites=true&w=majority&appName=ExpressAPI";
+mongoose.connect(mongoDB)
         .then(() => console.log('Success'))
         .catch((err) => console.log('Error'))
 
