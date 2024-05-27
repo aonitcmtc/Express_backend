@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+const cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,15 +9,21 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 
 var mongoDB = "mongodb+srv://patcharawealth:yAdgC7BbXPuSAkrT@expressapi.gyq6qm9.mongodb.net/?retryWrites=true&w=majority&appName=ExpressAPI";
+// var mongoDB = "mongodb+srv://patcharawealth:<password>@expressapi.gyq6qm9.mongodb.net/?retryWrites=true&w=majority&appName=ExpressAPI";
 mongoose.connect(mongoDB)
-        .then(() => console.log('Success'))
-        .catch((err) => console.log('Error'))
+        .then(() => console.log('mongoDB Connect Success'))
+        .catch((err) => console.log('Error To Connect!!!'))
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 
 var app = express();
+
+// app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5174'
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
